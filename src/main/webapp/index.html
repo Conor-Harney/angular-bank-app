@@ -14,11 +14,18 @@
     </nav>
     
     <!-- Example 1: ng-hide, ng-model
-    <div ng-hide="isHidden">
-    Name: <input type="text" ng-model="name"/>{{name}}
+    <div >
+	    <div ng-hide="isHidden">
+	    	Name: <input type="text" ng-model="name"/>{{name}}
+	    </div>
+	     <div ng-hide="isHidden2">
+	    	Name: <input type="text" ng-model="name2"/>{{name2}}
+	    </div>
     </div>
     Hide div: <input type="checkbox" ng-model="isHidden"/>
-     -->
+    Hide div: <input type="checkbox" ng-model="isHidden2"/>
+    -->
+    
      
     <!-- Example 2: ng-init, ng-click
     <div ng-init ="name='john'">
@@ -51,6 +58,37 @@
     	</table>
     </div>
     -->
+    
+    Example 3: ng-repeat and filters
+    <div ng-hide="hideTabel" ng-init ="accounts=[
+    {'firstName': 'John', 'secondName': 'Doe','accountNumber': '1234'},
+    {'firstName': 'Jane', 'secondName': 'Doe','accountNumber': '1235'},
+    {'firstName': 'Bob',  'secondName': 'Doe','accountNumber': '1236'},
+    {'firstName': 'Frank','secondName': 'Doe','accountNumber': '1237'},
+    {'firstName': 'Lilly','secondName': 'Doe','accountNumber': '1238'},
+    {'firstName': 'james','secondName': 'Doe','accountNumber': '1239'},
+    {'firstName': 'Mary', 'secondName': 'Doe','accountNumber': '1240'},
+    {'firstName': 'Sarah','secondName': 'Doe','accountNumber': '1241'}]">
+    	<h3><span>Simple example</span></h3>
+    	<ul>
+    		<li ng-repeat="account in accounts">{{account}}</li>
+    	</ul>
+    	<h3><span>Table example</span></h3>
+    	<table>
+    		<tr ng-style="headderStyle">
+    			<th>first</th>
+    			<th>second</th>
+    			<th>number</th>
+    		</tr>
+    		<tr ng-repeat="account in accounts">
+    			<td>{{account.firstName |  lowercase}}</td>
+    			<td>{{account.secondName | uppercase}}</td>
+    			<td>{{account.accountNumber}}</td>
+    		</tr>
+    	</table>
+    </div>
+    Hide this table: <input type="checkbox" ng-model="hideTabel"/>
+    Hide this table: <input type="button" value="set color" ng-click="headderStyle={'background-color':'blue'}"/>
 	<link rel="stylesheet" href="scripts/bootstrap.min.css"> 
     <script src="scripts/jquery-2.1.4.min.js"></script>
     <script src="scripts/angular.min.js"></script>
