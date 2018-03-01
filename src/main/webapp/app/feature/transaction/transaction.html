@@ -1,0 +1,18 @@
+<div ng-controller="transactionController as transactionCtrl">
+
+	<select ng-model="transactionCtrl.selectedName" ng-options="x['firstName'] for x in transactionCtrl.accounts">
+	
+	</select>
+	<table class="table">
+		<tr>
+			<th>{{'TransactionID'}}</th>
+			<th>{{'Transaction Name'}}</th>
+			<th>{{''}}</th>
+		</tr>
+		<tr ng-repeat="transactions in transactionCtrl.selectedName.transactions">
+			<td>TransactionID: {{transactions.transactionID}}</td>
+			<td>{{transactions.tranactionName}}</td>
+			<td><button class="btn" ng-click="transactionCtrl.goto(transactionCtrl.selectedName.indexAcc,$index)">Details</button>
+        </tr>
+	</table>
+</div>
