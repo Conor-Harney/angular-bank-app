@@ -10,7 +10,11 @@
         };
 
         this.saveAccount = function (accountToSave) {
+        	$log.log("Account service account save account");
+        	$log.log(accountToSave);
+        	$log.log(this.getAccounts());
             return dal.http.POST("rest/account/json", accountToSave);
+            $log.log(this.getAccounts());
         };
 
         this.updateAccount = function (accountToUpdate) {

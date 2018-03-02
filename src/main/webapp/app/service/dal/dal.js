@@ -20,6 +20,8 @@
 
                 POST: function (apiPath, itemToSave) {
                     var deferred = $q.defer();
+                    $log.log("dal post");
+                    $log.log(itemToSave);
                     $http(
                         {
                             method: "post",
@@ -35,6 +37,8 @@
                         }, function (e) {
                             deferred.reject(e);
                         });
+                    $log.log("dal post defered promise = ");
+                    $log.log(deferred.promise);
                     return deferred.promise;
                 },
 

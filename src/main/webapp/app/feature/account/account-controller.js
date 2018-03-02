@@ -8,6 +8,7 @@
     	var vm = this;
         
         vm.isHidden = false;
+       
         
         vm.hideTable = function()
         {
@@ -15,6 +16,7 @@
         };
         
         function init() { 
+        	$log.log(vm.fName);
         	accountService.getAccounts().then(function (results) 
         	{//on message 200
         		$log.log("Account init get accounts");

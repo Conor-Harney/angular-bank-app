@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <title>My Banking Application</title>
 </head>
+
+
 <body>
+
+<!--  
+<script>
+var options = [{'optionName':'Add','sref':'account'},{'optionName':'Add','sref':'account'}]
+var temp = ['tom','bob']
+var selectedOption = "Account";
+</script>
+-->
+
     <nav class="navbar navbar-default">
 	    <div class="container-fluid">
 	        <div class="navbar-header">
@@ -13,12 +24,16 @@
 	        <ul class="nav navbar-nav">
 	            <li><a ui-sref="dashboard">Dashboard</a></li>
 	            <li><a ui-sref="account">Account</a></li>
+	            <li><a ui-sref="addAccount">Add Account</a></li>
+	            <li><a ui-sref="removeAccount">Remove Account</a></li>
+	            
 	        </ul>
 	    </div>
 	</nav>
 	
     <div ui-view></div>
     
+    <!--<select ng-model="selectedOption" ng-options="option for option in temp"></select>-->
 	<link rel="stylesheet" href="scripts/bootstrap.min.css"> 
     <script src="scripts/jquery-2.1.4.min.js"></script>
     <script src="scripts/angular.min.js"></script>
@@ -36,6 +51,11 @@
     
     <script src="app/feature/account/account-controller.js"></script>
     <script src="app/feature/dashboard/dashboard-controller.js"></script>
+    <script src="app/feature/addAccount/addAccount-controller.js"></script>
+    <script src="app/feature/removeAccount/removeAccount-controller.js"></script>
+    
     </div>
 </body>
+
+
 </html>
