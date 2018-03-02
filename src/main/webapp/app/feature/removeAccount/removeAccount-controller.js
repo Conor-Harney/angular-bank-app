@@ -13,8 +13,7 @@
         
         vm.removeAccount = function()
         {
-        	var jsonString = '{"firstName": "'+ vm.fName +'","secondName": "'+ vm.lName +'","accountNumber": "'+ vm.accountNumber +'","transactions": []}'
-        	accountService.postAccount(jsonString);
+        	accountService.deleteAccount(vm.accountNumber);
         };
         
         function init() { 
