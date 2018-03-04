@@ -34,4 +34,9 @@ public class AccountServiceImpl implements AccountService {
 	public void setRepo(AccountRepository repo) {
 		this.repo = repo;
 	}
+
+	@Override
+	public String updateAccount(Long id, String accountStr) {
+		return repo.updateAccount(id, accountStr);
+	}
 }

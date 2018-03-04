@@ -63,12 +63,18 @@
                 },
 
                 DELETE: function (apiPath, itemToDelete) {
+                	 $log.log("dal delete ",  itemToDelete.id);
+                	
                     var deferred = $q.defer();
                     $http.delete(apiPath + itemToDelete.id).then(function () {
                         deferred.resolve();
+                        $log.log("dal delete resolve");
                     }, function (e) {
                         deferred.reject(e);
+                        $log.log("dal delete rejected");
+                        $log.log("error = ", e);
                     });
+                    $log.log("dal delete promise = ",  deferred.promise);
                     return deferred.promise;
                 }
             }

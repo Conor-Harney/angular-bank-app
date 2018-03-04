@@ -64,4 +64,12 @@ public class AccountMapRepository implements AccountRepository {
 		accountMap.put(1L, account);
 	}
 
+	@Override
+	public String updateAccount(Long id, String accountStr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
 }

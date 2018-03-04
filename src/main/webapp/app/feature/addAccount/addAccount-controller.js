@@ -2,9 +2,9 @@
 
 (function() {
 
-    var AddAccountController =  function(accountService, $log) {
+    var AddAccountController =  function(accountService, $log, $state) {
         
-    	$log.log("Account controller created");
+    	$log.log("Account controller AddAccountController created");
     	var vm = this;
     	
     	vm.fName = "";
@@ -13,42 +13,14 @@
         
         vm.isHidden = false;
         
-        vm.hideTable = function()
-        {
-        	vm.isHidden = !vm.isHidden
-        };
-        
-        vm.logVal = function()
-        {
-        	$log.log("log is");
-        	$log.log(vm.fName);
-        };
-        
         vm.postDetails = function()
         {
         	var jsonString = '{"firstName": "'+ vm.fName +'","secondName": "'+ vm.lName +'","accountNumber": "'+ vm.accountNumber +'","transactions": []}'
-        	//var jsonString = '{"firstName": "'+ vm.fName +'","secondName": "'+ vm.lName +'","accountNumber": "'+ vm.accountNumber +'","transactions": [{"transactionName": "Asda","transactionNumber": "12"}]}';
         	accountService.postAccount(jsonString);
+        	alert("Account added.");
         };
-        
-        function init() { 
-        	accountService.getAccounts().then(function (results) 
-        	{//on message 200
-        		$log.log("Account init get accounts");
-        		vm.accounts = results;
-        		$log.log("In the account controller the value of the result promise is ");
-        		$log.log(JSON.stringify(vm.accounts));
-            }, 
-            function (error) 
-            {//on error
-                vm.error = true;
-                vm.errorMessage = error;
-            });
-       }
-       
-       init();//call this as soon as the script is loaded into memory 
             
     };
 
-    angular.module('accountApp').controller('addAccountController', ['accountService','$log', AddAccountController]);
+    angular.module('accountApp').controller('addAccountController', ['accountService','$log', '$state', AddAccountController]);
 }());

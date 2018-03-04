@@ -1,14 +1,17 @@
-<div class="panel panel-default" ng-controller="removeAccountController as accountCtrl">
+<div class="panel panel-default" ng-controller="removeAccountController as remAccountCtrl">
 	    <div class="panel-heading">Accounts page</div>
 	    <div class="panel-body">
-   		{{accountCtrl.test}}
-   		
-   		
-   		<h3>Remove an account</h3>
+   		<h3>Are you sure you want to remove this account?</h3>
    		</br>
-   		Account Number: <input ng-model="accountCtrl.accountNumber" value="tet"></input>
+   		Account ID: {{remAccountCtrl.accountID}}
    		</br>
-   		<button ng-click="accountCtrl.removeAccount()">test me</button>
+   		First Name: {{remAccountCtrl.fName}}
+   		</br>
+   		Last Name: {{remAccountCtrl.lName}}
+   		</br>
+   		Account Number: {{remAccountCtrl.accountNumber}}
+   		</br>
+   		<button ng-click="remAccountCtrl.removeAccount()">Remove Account</button>
    		
 	</div>
 </div>

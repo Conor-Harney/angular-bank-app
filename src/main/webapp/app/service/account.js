@@ -18,22 +18,22 @@
 		};
 
 		this.deleteAccount = function(accountIDToDelete) {
-			
+			$log.log("made it to account.js with acount id ", accountIDToDelete, " to delete");
 			var ret = "file not found";
 			accountDal.getAccounts().then(function (results){//on message 200
-        		$log.log("delete account then results ");
-        		
         		
         		for(var curAcc in results)
         		{
         			$log.log("chccked account", results[curAcc]);
         			$log.log("chccked account id", results[curAcc].accountNumber);
-        			if(results[curAcc].accountNumber === accountIDToDelete)
+        			if(results[curAcc].id == accountIDToDelete)
     				{
             			ret = results[curAcc];
             			$log.log("normal result:" , ret);
+            			accountDal.deleteAccount(ret);
             			ret = JSON.stringify(ret);
             			$log.log("jsoned result:" , ret);
+            			
     				}
         		}
         		
@@ -42,20 +42,42 @@
             {//on error
             	$log.log("Oh god, errors are everywhere becase you did something wrong.");
             });
-			
-			
-			/*$log.log("in account service, all accounts =");
-			$log.log(accs);
-			var ret = "file not found";
 
-			for (var curAccount in accs) {
-				$log.log("chccked account", accs[curAccount]);
-				if(curAccount.accountNumber === accountIDToDelete)
-				{
-					$log.log("correct account =", account);
-					ret = accountDal.deleteAccount(account);
-				}
-			}*/
+			return ret;
+		};
+		
+		this.updateAccount = function(accountIDToUpdate, updatedAccount) 
+		{
+			$log.log("made it to account.js with: ", accountIDToUpdate, " and " , updatedAccount);
+			$log.log("updated account first name bracket ", updatedAccount["firstName"]);
+			$log.log("updated account first name dot ", updatedAccount.firstName);
+			
+			var ret = "file not found";
+			accountDal.getAccounts().then(function (results)
+			{//on message 200
+				$log.log("inside the get accounts in update account account.js");
+	    		for(var curAcc in results)
+	    		{
+	    			$log.log("checking: ", results[curAcc].id, " against: ", accountIDToUpdate);
+	    			if(results[curAcc].id == accountIDToUpdate)
+					{
+	    				$log.log("match found: ", results[curAcc]);
+	        			ret = results[curAcc];
+	        			$log.log("ret= ", ret);
+	        			ret.firstName = updatedAccount.firstName;
+	        			ret.secondName = updatedAccount.secondName;
+	        			ret.accountNumber = updatedAccount.accountNumber;
+	        			
+	        			$log.log("before parse: ", ret);
+	        			ret = accountDal.updateAccount(ret);
+					}
+	    		}
+	    		
+	        }, 
+	        function (error) 
+	        {//on error
+	        	$log.log("Oh god, errors are everywhere becase you did something wrong.");
+	        });
 
 			return ret;
 		};

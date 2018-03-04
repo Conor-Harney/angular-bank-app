@@ -1,0 +1,19 @@
+<div class="panel panel-default" ng-controller="updateAccountController as accountCtrl">
+	    <div class="panel-heading">Accounts page</div>
+	    <div class="panel-body">
+   		
+   		
+   		<h3>update an account</h3>
+   		</br>
+   		Account ID: {{accountCtrl.accountID}}
+   		</br>
+   		First Name: <input ng-model="accountCtrl.fName"></input>
+   		</br>
+   		Last Name: <input ng-model="accountCtrl.lName"></input>
+   		</br>
+   		Account Number: <input ng-model="accountCtrl.accountNumber"></input>
+   		</br>
+   		<button ng-click="accountCtrl.updateAccount()">Update Account</button>
+   		
+	</div>
+</div>

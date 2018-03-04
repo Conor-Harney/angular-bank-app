@@ -71,5 +71,20 @@ public class AccountDBRepository implements AccountRepository {
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
+	
+	@Transactional(javax.transaction.Transactional.TxType.REQUIRED)
+	public String updateAccount(Long id, String accountStr) {
+		Account updatedAccount = util.getObjectForJSON(accountStr, Account.class);
+		Account accountFromDB = manager.find(Account.class, id);
+		if (accountStr != null) {
+			findAccount(id).setFirstName(updatedAccount.getFirstName());
+			findAccount(id).setSecondName(updatedAccount.getSecondName());
+			findAccount(id).setAccountNumber(updatedAccount.getAccountNumber()); 
+			LOGGER.info("db name = " + accountFromDB.getSecondName());
+			LOGGER.info("updated name = " + updatedAccount.getSecondName());
+			
+		}
+		return "{\"message\": \"account sucessfully updated\"}";
+	}
 
 }

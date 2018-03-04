@@ -1,19 +1,24 @@
 <div class="panel panel-default" ng-controller="accountController as accountCtrl">
 	    <div class="panel-heading">Accounts page</div>
 	    <div class="panel-body">
-   		{{accountCtrl.test}}
    		<div ng-hide="accountCtrl.isHidden">
         	<h3><span>Accounts table</span></h3>
         	<table class="table">
         		<tr>
-        			<th>{{'first_name' | uppercase}}</th>
-        			<th>{{'surname' | uppercase}}</th>
-        			<th>{{'account_number' | uppercase}}</th>
+        			<th>{{'Account ID' | uppercase}}</th>
+        			<th>{{'first Name' | uppercase}}</th>
+        			<th>{{'Surname' | uppercase}}</th>
+        			<th>{{'account number' | uppercase}}</th>
+        			<th>{{'Remove Account' | uppercase}}</th>
+        			<th>{{'Edit Accout' | uppercase}}</th>
         		</tr>
         		<tr ng-repeat="account in accountCtrl.accounts">
+        			<td>{{account.id}}</td>
         			<td>{{account.firstName}}</td>
         			<td>{{account.secondName}}</td>
         			<td>{{account.accountNumber}}</td>
+        			<td><button ng-click="accountCtrl.selectAccountToDelete(account.id, account.firstName, account.secondName, account.accountNumber)" class="material-icons">delete_forever</button></td>
+        			<td><button ng-click="accountCtrl.selectAccountToUpdate(account.id, account.firstName, account.secondName, account.accountNumber)" class="material-icons">mode_edit</button></td>
         		</tr>
         	</table>
         </div>
