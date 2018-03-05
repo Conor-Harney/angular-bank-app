@@ -13,7 +13,7 @@
         	$log.log("send following to account service update account - ", $stateParams.selectedID, updatedAccount);
         	accountService.updateAccount($stateParams.selectedID, JSON.parse(updatedAccount));
         	alert("Account Updated.");
-        	$state.go('account');
+        	$state.go('account',{}, {reload: true});
         };
         
         function init() 

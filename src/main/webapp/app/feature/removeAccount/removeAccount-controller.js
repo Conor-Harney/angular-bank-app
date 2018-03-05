@@ -16,7 +16,7 @@
         	$log.log("removing account with id: ", $stateParams.selectedID);
         	accountService.deleteAccount($stateParams.selectedID);
         	alert("Account removed.");
-        	$state.go('account');
+        	$state.go('account',{}, {reload: true});
         };
         
         function init() {
